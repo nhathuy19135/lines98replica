@@ -14,7 +14,7 @@ Download the zipped files and extract it. Then open the folder using an IDE (we 
 * Get 5 of them in line, then it will disappear
 * The score increases by 5 every time a line of balls disappears
 * The game ends when there are no space left on the board.
-* [Dijkstra shortest path algorithm](https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/) is implemented for the selected ball to move into the correct position.
+* [Dijkstra shortest path algorithm](https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/) and [A* path finding algorithm](https://www.baeldung.com/java-a-star-pathfinding) is implemented for the selected ball to move into the correct position.
 ## Contributors
 * [Nguyen Nhat Huy](https://github.com/nhathuy19135)
 * [Nguyen Trung Tin](https://github.com/God1nBush)
