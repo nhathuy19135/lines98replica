@@ -202,7 +202,7 @@ public class LineFrame extends JFrame{
 							   else if(x>-1&&y>-1&&(n==icon[0]||n==icon[8]||n==icon[9]||n==icon[10]
 								        ||n==icon[11]||n==icon[12]||n==icon[13]||n==icon[14])){
 
-								        	if(a.Loang(x,y,i,j)==true){
+								        	if(a.Load(x,y,i,j)==true){
 								        		a.saveUndo();//luu lai trang thai truoc khi di chuyen
 								        		try{moveBall(x,y,i,j);}catch(Exception e){}
 								        		drawBall();
