@@ -15,15 +15,15 @@ public class LineFrame extends JFrame{
 		public JFrame GameOver = new JFrame(" GameOver !");
 		
 		public Icon icon[] = new Icon[22];
-		public JButton button[][] = new JButton[9][9];  // Mang JButton the hien trang thai cua bang
-		public JMenuItem nextball [] = new JMenuItem[3];// hien thi mau 3 qua bong sap xuat hien
-		public JMenuItem score=new JMenuItem("0  ");   	//hien thi diem cua nguoi choi
-		public  int x=-1,y=-1; 					//toa do de luu vi cho qua bong duoc chon
+		public JButton button[][] = new JButton[9][9];  // Display status
+		public JMenuItem nextball [] = new JMenuItem[3];// Display balls that will appear
+		public JMenuItem score=new JMenuItem("0  ");   	// Display score
+		public  int x=-1,y=-1; 					
 	
-	//khoi tao	
+	// Create Frame	
   	public LineFrame(){
    
-    	//7 qua bong to
+    	// Load 7 big balls
     	icon[1] = new ImageIcon("Images/big1.png");   
     	icon[2] = new ImageIcon("Images/big2.png");
     	icon[3] = new ImageIcon("Images/big3.png");
@@ -32,7 +32,7 @@ public class LineFrame extends JFrame{
     	icon[6] = new ImageIcon("Images/big6.png");
     	icon[7] = new ImageIcon("Images/big7.png");
     
-    	//7 qua bong nho
+    	// Load 7 small balls
     	icon[8] = new ImageIcon("Images/small1.png");
     	icon[9] = new ImageIcon("Images/small2.png");
     	icon[10] = new ImageIcon("Images/small3.png");
@@ -41,7 +41,7 @@ public class LineFrame extends JFrame{
     	icon[13] = new ImageIcon("Images/small6.png");
     	icon[14] = new ImageIcon("Images/small7.png");
     
-    	//7 qua bong nhay
+    	// Load 7 moving balls
     	icon[15] = new ImageIcon("Images/d1.gif");
 		icon[16] = new ImageIcon("Images/d2.gif");
 		icon[17] = new ImageIcon("Images/d3.gif");
@@ -71,17 +71,17 @@ public class LineFrame extends JFrame{
         setVisible(true);				
 	 }
  //----------------------------------------------------------------------------------------
-	//tao menu
+	// Create menu
 	public void setMenu(){
 		
 		JMenuBar menu=new JMenuBar();
 		menu.setLayout(new GridLayout(1,7));
 		setJMenuBar(menu);
-		JMenu gameMenu=new JMenu("Game");//them menu Game vao menu
+		JMenu gameMenu=new JMenu("Game");// Add game tab to Menu
 		gameMenu.setMnemonic('g');
 		menu.add(gameMenu);
 		
-		JMenuItem newItem=new JMenuItem("NewGame"); //them vao muc New
+		JMenuItem newItem=new JMenuItem("NewGame"); // Add to Menu
 		newItem.setToolTipText(" NewGame selected ");
 		newItem.setMnemonic('n');
 		newItem.addActionListener(new ActionListener(){		
@@ -91,7 +91,7 @@ public class LineFrame extends JFrame{
 		});
 	    gameMenu.add(newItem);	    
 	    
-	    JMenuItem exitItem=new JMenuItem("Exit");//them vao muc exit
+	    JMenuItem exitItem=new JMenuItem("Exit");// Add Exit
 		exitItem.setToolTipText(" Exit selected ");
 		exitItem.setMnemonic('e');
 		exitItem.addActionListener(new ActionListener(){		
@@ -102,11 +102,11 @@ public class LineFrame extends JFrame{
 		gameMenu.add(exitItem);
 		
 		
-		JMenu gameUtilities=new JMenu("Utilities");//them menu gameUtilities vao menu
+		JMenu gameUtilities=new JMenu("Utilities");// Add Utilities
 		gameUtilities.setMnemonic('U');
 		menu.add(gameUtilities);
 		
-	    JMenuItem topScoresItem=new JMenuItem("TopScores");//them vao muc TopScores
+	    JMenuItem topScoresItem=new JMenuItem("TopScores");//add TopScores
 		topScoresItem.setToolTipText(" TopScores selected");
 		topScoresItem.setMnemonic('t');
 		topScoresItem.addActionListener(new ActionListener(){		
@@ -118,7 +118,7 @@ public class LineFrame extends JFrame{
 		});				
 	    gameUtilities.add(topScoresItem);		
 		
-		JMenuItem undoItem=new JMenuItem("StepBack"); //them vao muc StepBack
+		JMenuItem undoItem=new JMenuItem("StepBack"); //add StepBack
 		undoItem.setToolTipText("  StepBack selected ");
 		undoItem.setMnemonic('b');
 		undoItem.addActionListener(new ActionListener(){		
@@ -140,7 +140,7 @@ public class LineFrame extends JFrame{
 
 	}
 //----------------------------------------------------------------------------------------
-    //lui lai 1 buoc
+    // Stepback Function
     public void StepBack(){
     	a.Undo();
     	displayNextBall();
@@ -149,7 +149,7 @@ public class LineFrame extends JFrame{
     		
     }	
 //----------------------------------------------------------------------------------------
-	// Ve Lai toan bo Cell
+	// Redraw cells
 	public void drawBall(){
         for (int i=0;i<9;i++) 	
            	for (int j=0;j<9;j++){     
@@ -158,14 +158,14 @@ public class LineFrame extends JFrame{
        }
 	}
  //----------------------------------------------------------------------------------------	
-	//hien thi 3 mau bong sap xuat hien
+	// Display 3 upcoming balls
 	public void displayNextBall(){
 		for(int i=0;i<3;i++){
 	    	nextball[i].setIcon(icon[a.nextcolor[i]]);
 	    }		
 	}
  //----------------------------------------------------------------------------------------	
-	// lam bong nhay
+	// Make ball move after selected
 	public void bounceBall(){
 		for(int i=0;i<9;i++)
 		  for(int j=0;j<9;j++)
@@ -176,7 +176,7 @@ public class LineFrame extends JFrame{
 		drawBall();
 	}
  //----------------------------------------------------------------------------------------	
-	//cac thao tac xu li nut bam'
+	//Interaction with board
 	public void setButton(){
 	   for (int i=0;i<9;i++)
         for (int j=0;j<9;j++)	 
@@ -203,22 +203,22 @@ public class LineFrame extends JFrame{
 								        ||n==icon[11]||n==icon[12]||n==icon[13]||n==icon[14])){
 
 								        	if(a.Load(x,y,i,j)==true){
-								        		a.saveUndo();//luu lai trang thai truoc khi di chuyen
+								        		a.saveUndo();// Save previos action
 								        		try{moveBall(x,y,i,j);}catch(Exception e){}
 								        		drawBall();
 								        		if(a.cutBall()==false)a.new3Balls();
 								        		a.cutBall();
-								        		displayNextBall();//hien thi 3 mau sap xuat hien
+								        		displayNextBall();// Display 3 upcoming colors
 								        		drawBall();
 												x=y=-1;	
 								        	}
 								        } 
 
-							bounceBall();//nhay bong
+							bounceBall();
 							player.scores=(int)a.MarkResult;
 							score.setText((int)a.MarkResult+" ");
 							try{
-								stopGame();//dung` tro choi neu cac o da~ day` bong
+								stopGame();// Stop the game if board is full
 							}catch(IOException e){}
 												           	            
            	            }
@@ -229,7 +229,7 @@ public class LineFrame extends JFrame{
 
 	}
  //----------------------------------------------------------------------------------------	
-	//di chuyen bong
+	// Move balls
 	public void moveBall(int i,int j,int ii,int jj)throws Exception{		
 
 		   a.ball[ii][jj] = a.ball[i][j]-14;
@@ -241,7 +241,7 @@ public class LineFrame extends JFrame{
 	}
 
  //----------------------------------------------------------------------------------------	
-	//bat dau tro choi
+	// Start the game
 	public void startGame(){
 		a.StartGame();
 		score.setText("0 ");		
@@ -251,11 +251,11 @@ public class LineFrame extends JFrame{
 	
 	}
  //----------------------------------------------------------------------------------------	
-	//dung tro choi khi cac o da xep day bong
+	// Function to stop the game if the board is full
 	public void stopGame()    throws IOException{
 		if(a.gameover==true){
 			topScores.readFile();
-			boolean k2 =false;//kiem tra diem xem co luu vao TopScores khong
+			boolean k2 =false;// check scores
 			for(int i=0;i<10;i++)
 				if(topScores.player[i].scores<player.scores){
 					k2 = true;
@@ -276,7 +276,7 @@ public class LineFrame extends JFrame{
 				GameOver.setSize(290,150);
 				GameOver.setResizable(false);
 				GameOver.show();
-				GameOver.addWindowListener( new WindowAdapter() {// tao game moi khi tat cua so
+				GameOver.addWindowListener( new WindowAdapter() {// Start new game upon closing windows
 					public void windowClosing(WindowEvent e){ 
 							startGame();
 					}
