@@ -1,5 +1,6 @@
 # Introduction
 This is our group attempt at recreating the old lines98 game (similar to connect 5) from the early 2000s using Java Language.
+[Here is the link to our report.](https://docs.google.com/document/d/1AWTMfIG1ln6IHMenQlVeO8_4hrAVI3osuveGR6eTOaY/edit?usp=sharing)
 ## Dependencies
 Java Development Kit 11
 ## Installation
