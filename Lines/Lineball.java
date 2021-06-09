@@ -302,7 +302,7 @@ public class Lineball{
 		}	     	
     //-------------------------------------------------------------------
     //Load path
-    public boolean Loang(int si, int sj, int fi, int fj){ // load to find path: (si,sj)-->(fi,fj)
+    public boolean Load(int si, int sj, int fi, int fj){ // load to find path: (si,sj)-->(fi,fj)
      
      	int [] di = {-1, 1, 0, 0};
 	    int [] dj = {0 , 0,-1, 1};
