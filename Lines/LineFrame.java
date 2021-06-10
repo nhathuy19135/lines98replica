@@ -67,7 +67,7 @@ public class LineFrame extends JFrame{
 		setLayout(new GridLayout(9,9));
 		setSize(520,600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setResizable(false);
+		setResizable(true);
         setVisible(true);				
 	 }
  //----------------------------------------------------------------------------------------
@@ -274,7 +274,7 @@ public class LineFrame extends JFrame{
 				GameOver.add(msg2);
 				GameOver.setLayout(new GridLayout(2,1));
 				GameOver.setSize(290,150);
-				GameOver.setResizable(false);
+				GameOver.setResizable(true);
 				GameOver.show();
 				GameOver.addWindowListener( new WindowAdapter() {// Start new game upon closing windows
 					public void windowClosing(WindowEvent e){ 
